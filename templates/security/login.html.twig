@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+   <head>
+       <meta charset="UTF-8">
+       <title>{%block titre %}Connecter{% endblock %}</title>
+       <link rel="stylesheet" type="text/css" href="./css/login.css">
+       <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+       <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+   </head>
+   <body>
+
+      {% if error %}
+      <div class="center-screen">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div>{{  error.message|trans}}</div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      <div class="center-screen">
+       <form action="{{ path('security_login') }}" method="post">
+         <div class="modal-content">
+          <div class="modal-header">
+            <p><b>Connexion</b></p>
+          </div>
+          <div class="modal-body">
+            <label for="uname"><b>Nom d'utilisateur</b></label>
+            <input type="text" placeholder="Enter Username" name="_username">
+
+            <label for="psw"><b>Mot de passe</b></label>
+            <input type="password" placeholder="Enter Password" name="_password">
+          </div>
+          <div class="modal-footer">
+            <button type="submit">Se Connecter</button>
+          </div>
+        </div>
+      </form>
+   </body>
+</html>

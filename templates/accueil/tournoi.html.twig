@@ -1,0 +1,212 @@
+{% extends 'base.html.twig' %}
+{%block a4%}
+  <li><a href="{{path('tournoi')}}" class="active"><i>o</i><p>tournoi</p></a></li>
+{%endblock a4%}
+{%block page%}Tournoi{%endblock page%}
+{% block title %}Tennis Club Montigny-en-Gohelle{% endblock %}
+
+{% block body %}
+<style>
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  border-radius:.25rem;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color:#2A5687;
+  color: white;
+}
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  background-color: DodgerBlue;
+}
+
+.flex-container > div {
+  background-color: #f1f1f1;
+  width: 100px;
+  margin: 10px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+}
+#table-wrapper {
+  position:relative;
+}
+#table-scroll {
+  height:425px;
+  overflow:auto;
+  margin-top:20px;
+}
+#table-wrapper table {
+  width:100%;
+
+}
+#table-wrapper table thead th .text {
+  position:absolute;
+  top:-20px;
+  z-index:2;
+  height:20px;
+  width:35%;
+  border:1px solid red;
+}
+</style>
+<div class="tab">
+  <div class="center">
+    <button class="tablinks" onclick="openCity(event, 'yesterday')">Programmation du {{ "yesterday"|date("d/m/Y") }} </button>
+    <button class="tablinks" onclick="openCity(event, 'now')">Programmation du {{ "now"|date("d/m/Y") }} </button>
+    <button class="tablinks" onclick="openCity(event, 'tomorrow')">Programmation du {{ "tomorrow"|date("d/m/Y") }}</button>
+  </div>
+</div>
+
+
+<div id="yesterday" class="tabcontent">
+  <div id="table-wrapper">
+    <div id="table-scroll">
+      <table id="customers">
+        <tr>
+          <th>Heure</th>
+          <th>Catégorie</th>
+          <th>Joueur</th>
+          <th>Set 1</th>
+          <th>Set 2</th>
+          <th>Set 3</th>
+          </tr>
+        <tr>
+          <td>18:00</td>
+          <td>SM</td>
+          <td>
+            <div>Alfreds Futterkiste</div>
+            <div>vs</div>
+            <div>Alfreds Futterkiste</div>
+          </td>
+          <td>
+            <div>6</div>
+            <div><hr></div>
+            <div>1</div>
+          </td>
+          <td>
+            <div>6</div>
+            <div><hr></div>
+            <div>7</div>
+          </td>
+          <td>
+            <div>6</div>
+            <div><hr></div>
+            <div>2</div>
+          </td>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div id="now" class="tabcontent">
+  <div id="table-wrapper">
+    <div id="table-scroll">
+      <table id="customers">
+        <tr>
+          <th>Heure</th>
+          <th>Catégorie</th>
+          <th>Joueur</th>
+          <th>Set 1</th>
+          <th>Set 2</th>
+          <th>Set 3</th>
+          </tr>
+        <tr>
+          <td>18:00</td>
+          <td>SM</td>
+          <td>
+            <div>Alfreds Futterkiste</div>
+            <div>vs</div>
+            <div>Alfreds Futterkiste</div>
+          </td>
+          <td>
+            <div>6</div>
+            <div><hr></div>
+            <div>1</div>
+          </td>
+          <td>
+            <div>6</div>
+            <div><hr></div>
+            <div>7</div>
+          </td>
+          <td>
+            <div>6</div>
+            <div><hr></div>
+            <div>2</div>
+          </td>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div id="tomorrow" class="tabcontent">
+  <div id="table-wrapper">
+    <div id="table-scroll">
+      <table id="customers">
+        <tr>
+          <th>Heure</th>
+          <th>Catégorie</th>
+          <th>Joueur</th>
+          <th>Set 1</th>
+          <th>Set 2</th>
+          <th>Set 3</th>
+          </tr>
+        <tr>
+          <td>18:00</td>
+          <td>SM</td>
+          <td>
+            <div>Alfreds Futterkiste</div>
+            <div>vs</div>
+            <div>Alfreds Futterkiste</div>
+          </td>
+          <td>
+            <div>6</div>
+            <div><hr></div>
+            <div>1</div>
+          </td>
+          <td>
+            <div>6</div>
+            <div><hr></div>
+            <div>7</div>
+          </td>
+          <td>
+            <div>6</div>
+            <div><hr></div>
+            <div>2</div>
+          </td>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+{% endblock %}

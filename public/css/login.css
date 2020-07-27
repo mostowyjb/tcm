@@ -1,0 +1,106 @@
+body{
+  margin: 0;
+  color: #2c2c2c;
+ font-size: 14px;
+ font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+ -moz-osx-font-smoothing: grayscale;
+ -webkit-font-smoothing: antialiased;
+ display: block;
+}
+.center-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.center-screenmodal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity:.75!important;
+    z-index: 5 !important;
+    background-color: black;
+}
+.center-screenmodal .modal-content{
+  position: relative;
+  background-color: #fff;
+  margin: auto;
+  padding: 0;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  border-color: black;
+}
+
+.modal-header {
+  padding: 2px 16px;
+  color: black;
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+/* Modal Body */
+.modal-body {
+  margin-top: 3%;
+  padding: 2px 16px;}
+
+/* Modal Footer */
+.modal-footer {
+  margin-top: 3%;
+  padding: 2px 100px;
+  color: white;
+  text-align: right;
+  border-top: 1px solid #e5e5e5;
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fff;
+  margin: auto;
+  padding: 0;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  border-color: black;
+}
+input{
+border-radius: 30px; }
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+button {
+  background-color: #2A5788;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 30px;
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+  opacity: 0.8;
+}
+button:hover{
+  background:  #ffc109;
+  color: #fff;
+}

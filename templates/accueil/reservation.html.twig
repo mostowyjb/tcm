@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{%block a7%}
+  <li><a href="{{ path('security_login') }}" class='active'><i class="icon">o</i><p>Réservation</p></a></li>
+{%endblock a7%}
+{%block page%}reservation{%endblock page%}
+{% block title %}Tennis Club Montigny-en-Gohelle{% endblock %}
+
+{% block body %}
+<iframe src="http://83.153.83.24/tecnnis/FR/PAGE_acces_adherent.awp?gsNumcarte=0{{app.user.login}}&gsCodesecret={{app.user.mdp|slice(0, 4)}}"></iframe>
+{% endblock %}
