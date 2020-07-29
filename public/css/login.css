@@ -6,6 +6,13 @@ body{
  -moz-osx-font-smoothing: grayscale;
  -webkit-font-smoothing: antialiased;
  display: block;
+ background-image: url(../img/tcmlogin_photos_v2_x2.png);
+ background-repeat: no-repeat;
+
+ background-size: 100% ;
+
+
+
 }
 .center-screen {
     position: fixed;
@@ -40,6 +47,7 @@ body{
   animation-name: animatetop;
   animation-duration: 0.4s;
   border-color: black;
+  opacity: 0;
 }
 
 .modal-header {

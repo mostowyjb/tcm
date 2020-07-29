@@ -1,12 +1,17 @@
 <?php
 
 namespace App\Controller;
-
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AccueilController extends AbstractController
 {
+  private $em;
+  public function __construct(\Doctrine\ORM\EntityManagerInterface $em)
+  {
+      $this->em = $em;
+  }
     /**
      * @Route("/", name="acceuil")
      */
@@ -72,9 +77,111 @@ class AccueilController extends AbstractController
      */
     public function utilisateur()
     {
+
+      $repository=$this->getDoctrine()->getRepository(User::class);
+        $res=$repository->findAll();
+
         return $this->render('accueil/utilisateur.html.twig', [
             'controller_name' => 'AcceuilController',
+            'resU' =>  $res,
         ]);
     }
+
+    /**
+     * @Route("/newUser", name="newUser")
+     */
+    public function newUser(\Symfony\Component\HttpFoundation\Request $request)
+    {
+
+      $nom=$request->get('nom');
+      $prenom=$request->get('prenom');
+      $login=$request->get('login');
+      $mdp=$request->get('mdp');
+      if($nom!=NULL && $prenom!=NULL && $login!=NULL && $mdp!=NULL)
+      {
+      $user= new User();
+      $user->setNom($nom);
+      $user->setPrenom($prenom);
+      $user->setLogin($login);
+      $user->setMdp($mdp);
+
+      $this->em=$this->getDoctrine()->getManager();
+      $this->em->persist($user);
+      $this->em->flush();
+      }
+        return $this->redirectToRoute('utilisateur');
+    }
+
+    /**
+     * @Route("/deleteUser/{iduser}", name="deleteUser")
+     */
+    public function deleteUser($iduser)
+    {
+
+      $repository=$this->getDoctrine()->getRepository(User::class);
+      $res=$repository->findOneBy(['id' => $iduser]);
+
+      $user= new User();
+      $user=$res;
+
+      $this->em=$this->getDoctrine()->getManager();
+      $this->em->remove($user);
+      $this->em->flush();
+
+        return $this->redirectToRoute('utilisateur');
+    }
+
+    /**
+     * @Route("/modifyUser/{iduser}", name="modifyUser")
+     */
+    public function modifyUser($iduser)
+    {
+
+      $repository=$this->getDoctrine()->getRepository(User::class);
+      $res=$repository->findOneBy(['id' => $iduser]);
+
+      $user= new User();
+      $user=$res;
+
+      return $this->render('accueil/modifutilisateur.html.twig', [
+          'controller_name' => 'AcceuilController',
+          'user' =>  $user,
+      ]);
+    }
+
+    /**
+     * @Route("/vmodifyUser", name="vmodifyUser")
+     */
+    public function vmodifyUser(\Symfony\Component\HttpFoundation\Request $request)
+    {
+      $nom=$request->get('nom');
+      $prenom=$request->get('prenom');
+      $login=$request->get('login');
+      $mdp=$request->get('mdp');
+
+      $repository=$this->getDoctrine()->getRepository(User::class);
+      $res=$repository->findOneBy(['nom' => $nom, 'prenom' => $prenom]);
+
+      $user=$res;
+
+      $user->setNom($nom);
+      $user->setPrenom($prenom);
+      $user->setLogin($login);
+      $user->setMdp($mdp);
+
+      $this->em=$this->getDoctrine()->getManager();
+      $this->em->flush();
+
+    return $this->redirectToRoute('utilisateur');
+    }
+
+
+    /**
+ * @Route("/denied", name="denied")
+ */
+public function denied() {
+    return $this->redirect('/');
+}
+
 
 }

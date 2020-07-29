@@ -263,9 +263,49 @@ li {
   line-height: 1.625rem;
 }
 .deconnexion{
-  margin-bottom: 0px!important;
+  margin-bottom: 0px!important;}
+
+.bt{
+  display: inline-block;
+font-weight: 400;
+color: #212529;
+text-align: center;
+vertical-align: middle;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+background-color: transparent;
+border: 1px solid transparent;
+padding: .375rem .75rem;
+font-size: 1rem;
+line-height: 1.5;
+border-radius: .25rem;
+}
+.bt:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+.btnadd{
+  color: #fff;
+  background-color: #28a745;
+  border-color: #28a745;
+  }
+
+.btndelete{
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+    }
+
+.btnmodifier{
+    color: #fff;
+    background-color: #ffc107;
+    border-color: #ffc107;
 }
 
+button, select {
+      text-transform: none;
+  }
 
 /*-----------RESERVATION-----------*/
 iframe{
@@ -388,15 +428,77 @@ padding-right: 20px;
   to {opacity: 1;}
 }
 
-/*-----------------------------FOMR---------------------------*/
+/*-----------------------------FORM---------------------------*/
 
 input{
 border-radius: 30px; }
 input[type=text], input[type=password] {
-  width: 10%;
+  width: 25%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;
+}
+
+
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+/*-----------------------------TABLE---------------------------*/
+
+th, td {
+  text-align: left;
+  padding: 16px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/*-----------------------------MODAL---------------------------*/
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 15%;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  margin-left: 10%;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }

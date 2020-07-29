@@ -7,7 +7,8 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
         <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
         <link rel="icon" href="../img/tcmlog.ico" />
-        <script src="./js/jquery.js"></script>
+        <script src="./js/tcm.js"></script>
+
         {% block stylesheets %}
 
         {% endblock %}
@@ -53,6 +54,9 @@
                     {%block a8%}
                       <li><a href="{{ path('utilisateur') }}"><i class="icon">o</i><p>utilisateurs</p></a></li>
                     {%endblock a8%}
+                  {%endif%}
+                  {% if is_granted('ROLE_LICENCIE') %}
+                      <li><a href="{{ path('security_logout') }}"><i class="icon">o</i><p>Déconnexion</p></a></li>
                   {%endif%}
                 </ul>
               </div>

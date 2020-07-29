@@ -6,23 +6,93 @@
 {% block title %}Tennis Club Montigny-en-Gohelle{% endblock %}
 
 {% block body %}
-<form action="{{ path('security_login') }}" method="post">
 
-     <input type="text" placeholder="Nom" name="nom">
 
-     <input type="text" placeholder="Prénom" name="prenom">
+<table id="">
+  <tr>
+    <th>ID</th>
+    <th>Nom</th>
+    <th>Prénom</th>
+    <th>Identifiant</th>
+    <th>Mot de Passe</th>
+    <th><button id="myBtn" class="bt btnadd">Ajouter</button></th>
+  </tr>
+  {% for user in resU %}
+  <tr>
+    <th scope="row">{{user.id}}</th>
+    <td>{{user.nom}}</td>
+    <td>{{user.prenom}}</td>
+    <td>{{user.login}}</td>
+    <td>{{user.mdp}}</td>
+    <td>
+      <form action="{{ path('deleteUser',{'iduser':user.id}) }}" method="post">
+        <button  class="bt btndelete">Supprimer</button>
+      </form>
+      <br/>
+      <form action="{{ path('modifyUser',{'iduser':user.id}) }}" method="post">
+        <button  class="bt btnmodifier">Modifier</button>
+      </form>
+    </td>
+  </tr>
+{% endfor %}
+</table>
 
-     <input type="text" placeholder="Adresse" name="adresse"
+<!-- The Modal -->
+<div id="myModal" class="modal">
 
-     <input type="text" placeholder="Zip" name="zip">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>
+      <form action="{{ path('newUser') }}" method="post">
+        <label ><b>Nom d'utilisateur</b></label>
+        <br/>
+        <input type="text" placeholder="Enter Username" name="nom">
+        <br/>
+        <label><b>Prénom</b></label>
+        <br/>
+        <input type="text" placeholder="Prénom" name="prenom">
+        <br/>
+        <label><b>Identifiant</b></label>
+        <br/>
+        <input type="text" placeholder="Prénom" name="login">
+        <br/>
+        <label><b>Mot de passe</b></label>
+        <br/>
+        <input type="text" placeholder="Prénom" name="mdp">
 
-     <input type="text" placeholder="Tel" name="tel">
+        <button type="submit" class="bt btnadd" style="margin-right:60%">Ajouter</button>
+      </form>
+    </p>
+  </div>
+</div>
 
-     <input type="text" placeholder="Mail" name="mail">
+<script>
+  // Get the modal
+  var modal = document.getElementById("myModal");
 
-     <input type="text" placeholder="Login" name="login">
+  // Get the button that opens the modal
+  var btn = document.getElementById("myBtn");
 
-     <input type="password" placeholder="Mot de passe" name="mdp">
-</form>
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
 
+  // When the user clicks the button, open the modal
+  btn.onclick = function() {
+    modal.style.display = "block";
+  }
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+</div>
 {% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{%block a3%}
+  <li><a href="{{ path('utilisateur') }}"><i class="icon">o</i><p>utilisateurs</p></a></li>
+{%endblock a3%}
+{%block page%}utilisateur{%endblock page%}
+{% block title %}Tennis Club Montigny-en-Gohelle{% endblock %}
+
+{% block body %}
+<form action="{{ path('vmodifyUser') }}" method="post">
+  <label ><b>Nom d'utilisateur</b></label>
+  <br/>
+  <input type="text" value="{{user.nom}}" name="nom">
+  <br/>
+  <label><b>Prénom</b></label>
+  <br/>
+  <input type="text" value="{{user.prenom}}" name="prenom">
+  <br/>
+  <label><b>Identifiant</b></label>
+  <br/>
+  <input type="text" value="{{user.login}}" name="login">
+  <br/>
+  <label><b>Mot de passe</b></label>
+  <br/>
+  <input type="text" value="{{user.mdp}}" name="mdp">
+
+  <button type="submit" class="bt btnadd" style="margin-right:60%">Ajouter</button>
+</form>
+
+{% endblock %}
