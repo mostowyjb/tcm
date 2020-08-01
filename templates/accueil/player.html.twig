@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+{%block a9%}
+  <li><a href="{{ path('player') }}" class="active" ><i class="icon">o</i><p>Joueurs tournoi</p></a></li>
+{%endblock a9%}
+{%block page%}Joueurs tournoi{%endblock page%}
+{% block title %}Tennis Club Montigny-en-Gohelle{% endblock %}
+
+{% block body %}
+
+
+<table id="">
+  <tr>
+    <th>ID</th>
+    <th>Nom</th>
+    <th>Prénom</th>
+    <th>Club</th>
+    <th>Classement</th>
+    <th><button id="myBtn" class="bt btnadd">Ajouter</button></th>
+  </tr>
+  {% for player in resP %}
+  <tr>
+    <th scope="row">{{player.id}}</th>
+    <td>{{player.nom}}</td>
+    <td>{{player.prenom}}</td>
+    <td>{{player.club}}</td>
+    <td>{{player.classement}}</td>
+    <td>
+      <form action="{{ path('deletePlayer',{'idplayer':player.id}) }}" method="post">
+        <button  class="bt btndelete">Supprimer</button>
+      </form>
+      <br/>
+      <form action="{{ path('modifyPlayer',{'idplayer':player.id}) }}" method="post">
+        <button  class="bt btnmodifier">Modifier</button>
+      </form>
+    </td>
+  </tr>
+{% endfor %}
+</table>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>
+      <form action="{{ path('newPlayer') }}" method="post">
+        <label ><b>Nom</b></label>
+        <br/>
+        <input type="text" placeholder="Enter Username" name="nom">
+        <br/>
+        <label><b>Prénom</b></label>
+        <br/>
+        <input type="text" placeholder="Prénom" name="prenom">
+        <br/>
+        <label><b>Club</b></label>
+        <br/>
+        <input type="text" placeholder="Club" name="club">
+        <br/>
+        <label><b>Classement</b></label>
+        <br/>
+        <input type="text" placeholder="Classement" name="classement">
+
+        <button type="submit" class="bt btnadd" style="margin-right:60%">Ajouter</button>
+      </form>
+    </p>
+  </div>
+</div>
+
+<script>
+  // Get the modal
+  var modal = document.getElementById("myModal");
+
+  // Get the button that opens the modal
+  var btn = document.getElementById("myBtn");
+
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+
+  // When the user clicks the button, open the modal
+  btn.onclick = function() {
+    modal.style.display = "block";
+  }
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+</div>
+{% endblock %}

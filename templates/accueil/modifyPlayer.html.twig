@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{%block a9%}
+  <li><a href="{{ path('player') }}"><i class="icon">o</i><p>Joueurs Tournoi</p></a></li>
+{%endblock a9%}
+{%block page%}Joueurs Tournoi{%endblock page%}
+{% block title %}Tennis Club Montigny-en-Gohelle{% endblock %}
+
+{% block body %}
+<form action="{{ path('vmodifyPlayer') }}" method="post">
+  <label ><b>Nom</b></label>
+  <br/>
+  <input type="text" value="{{player.nom}}" name="nom">
+  <br/>
+  <label><b>Prénom</b></label>
+  <br/>
+  <input type="text" value="{{player.prenom}}" name="prenom">
+  <br/>
+  <label><b>Club</b></label>
+  <br/>
+  <input type="text" value="{{player.club}}" name="club">
+  <br/>
+  <label><b>Classement</b></label>
+  <br/>
+  <input type="text" value="{{player.classement}}" name="classement">
+
+  <button type="submit" class="bt btnadd" style="margin-right:60%">Ajouter</button>
+</form>
+
+{% endblock %}
