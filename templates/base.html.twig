@@ -34,6 +34,11 @@
                   {%block a3%}
                     <li><a href="{{path('contact')}}"><i class="icon">o</i><p>Nous contacter</p></a></li>
                   {%endblock a3%}
+                  {% if is_granted('ROLE_LICENCIE') %}
+                    {%block a7%}
+                      <li><a href="{{ path('reservation') }}"><i class="icon">o</i><p>Réservation</p></a></li>
+                    {%endblock a7%}
+                  {%endif%}
                   {%block a4%}
                     <li><a href="{{path('tournoi')}}"><i class="icon">o</i><p>Tournoi</p></a></li>
                   {%endblock a4%}
@@ -45,15 +50,15 @@
                       <li><a href="{{ path('security_login') }}"><i class="icon">o</i><p>Esapce licencié</p></a></li>
                     {%endblock a6%}
                   {%endif%}
-                  {% if is_granted('ROLE_LICENCIE') %}
-                    {%block a7%}
-                      <li><a href="{{ path('reservation') }}"><i class="icon">o</i><p>Réservation</p></a></li>
-                    {%endblock a7%}
-                  {%endif%}
                   {% if is_granted('ROLE_SUPERADMIN') %}
                     {%block a8%}
                       <li><a href="{{ path('utilisateur') }}"><i class="icon">o</i><p>utilisateurs</p></a></li>
                     {%endblock a8%}
+                  {%endif%}
+                  {% if is_granted('ROLE_ADMIN') %}
+                    {%block a9%}
+                      <li><a href="{{ path('player') }}"><i class="icon">o</i><p>Joueurs tournoi</p></a></li>
+                    {%endblock a9%}
                   {%endif%}
                   {% if is_granted('ROLE_LICENCIE') %}
                       <li><a href="{{ path('security_logout') }}"><i class="icon">o</i><p>Déconnexion</p></a></li>

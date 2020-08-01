@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 use App\Entity\User;
+use App\Entity\Player;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -172,8 +173,113 @@ class AccueilController extends AbstractController
       $this->em=$this->getDoctrine()->getManager();
       $this->em->flush();
 
-    return $this->redirectToRoute('utilisateur');
+      return $this->redirectToRoute('utilisateur');
     }
+
+
+    /**
+     * @Route("/player", name="player")
+     */
+    public function player()
+    {
+
+      $repository=$this->getDoctrine()->getRepository(Player::class);
+        $res=$repository->findAll();
+
+        return $this->render('accueil/player.html.twig', [
+            'controller_name' => 'AcceuilController',
+            'resP' =>  $res,
+        ]);
+    }
+
+    /**
+     * @Route("/newPlayer", name="newPlayer")
+     */
+    public function newPlayer(\Symfony\Component\HttpFoundation\Request $request)
+    {
+
+      $nom=$request->get('nom');
+      $prenom=$request->get('prenom');
+      $club=$request->get('club');
+      $classement=$request->get('classement');
+      if($nom!=NULL && $prenom!=NULL && $club!=NULL && $classement!=NULL)
+      {
+      $player= new Player();
+      $player->setNom($nom);
+      $player->setPrenom($prenom);
+      $player->setClub($club);
+      $player->setClassement($classement);
+
+      $this->em=$this->getDoctrine()->getManager();
+      $this->em->persist($player);
+      $this->em->flush();
+      }
+        return $this->redirectToRoute('player');
+    }
+
+    /**
+     * @Route("/deletePlayer/{$idplayer}", name="deletePlayer")
+     */
+    public function deletePlayer($idplayer)
+    {
+
+      $repository=$this->getDoctrine()->getRepository(Player::class);
+      $res=$repository->findOneBy(['id' => $idplayer]);
+
+      $player= new Player();
+      $player=$res;
+
+      $this->em=$this->getDoctrine()->getManager();
+      $this->em->remove($player);
+      $this->em->flush();
+
+        return $this->redirectToRoute('player');
+    }
+
+    /**
+     * @Route("/modifyPlayer/{idplayer}", name="modifyPlayer")
+     */
+    public function modifyPlayer($idplayer)
+    {
+
+      $repository=$this->getDoctrine()->getRepository(Player::class);
+      $res=$repository->findOneBy(['id' => $idplayer]);
+
+      $player= new Player();
+      $player=$res;
+
+      return $this->render('accueil/modifyPlayer.html.twig', [
+          'controller_name' => 'AcceuilController',
+          'player' =>  $player,
+      ]);
+    }
+
+    /**
+     * @Route("/vmodifyPlayer", name="vmodifyPlayer")
+     */
+    public function vmodifyPlayer(\Symfony\Component\HttpFoundation\Request $request)
+    {
+      $nom=$request->get('nom');
+      $prenom=$request->get('prenom');
+      $club=$request->get('club');
+      $classement=$request->get('classement');
+
+      $repository=$this->getDoctrine()->getRepository(Player::class);
+      $res=$repository->findOneBy(['nom' => $nom, 'prenom' => $prenom]);
+
+      $player=$res;
+
+      $player->setNom($nom);
+      $player->setPrenom($prenom);
+      $player->setClub($club);
+      $player->setClassement($classement);
+
+      $this->em=$this->getDoctrine()->getManager();
+      $this->em->flush();
+
+    return $this->redirectToRoute('player');
+    }
+
 
 
     /**

@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
-{%block a3%}
-  <li><a href="{{ path('utilisateur') }}"><i class="icon">o</i><p>utilisateurs</p></a></li>
-{%endblock a3%}
+{%block a8%}
+  <li><a href="{{ path('utilisateur') }}" class="active" ><i class="icon">o</i><p>utilisateurs</p></a></li>
+{%endblock a8%}
 {%block page%}utilisateur{%endblock page%}
 {% block title %}Tennis Club Montigny-en-Gohelle{% endblock %}
 
@@ -15,6 +15,7 @@
     <th>Prénom</th>
     <th>Identifiant</th>
     <th>Mot de Passe</th>
+    <th>Rôle</th>
     <th><button id="myBtn" class="bt btnadd">Ajouter</button></th>
   </tr>
   {% for user in resU %}
@@ -24,6 +25,16 @@
     <td>{{user.prenom}}</td>
     <td>{{user.login}}</td>
     <td>{{user.mdp}}</td>
+    <td>{% for role in user.roles %}
+     {% if role == 'ROLE_SUPERADMIN' %}
+     Administrateur
+     {% endif %}
+     {% if role == 'ROLE_LICENCIE' %}
+     Licencié(e)
+     {% endif %}
+    <br>
+    {% endfor %}
+    </td>
     <td>
       <form action="{{ path('deleteUser',{'iduser':user.id}) }}" method="post">
         <button  class="bt btndelete">Supprimer</button>

@@ -11,8 +11,6 @@ body{
 
  background-size: 100% ;
 
-
-
 }
 .center-screen {
     position: fixed;
@@ -111,4 +109,22 @@ button:hover {
 button:hover{
   background:  #ffc109;
   color: #fff;
+}
+.align-btn{
+  margin-left: -90%;
+  margin-bottom: -9%;
+
+}
+.btnHome{
+  box-shadow: 8px 8px 16px 8px rgba(0,0,0,0.2);
+  margin-left:0%;
+  border: none;
+  border-radius: 100%;
+  width: 40px;
+  height: 40px;
+  background:  #2A5788;
+  color: #fff;
+  cursor: pointer;  width: 0%!important;
+  height: 0% !important;
+
 }
