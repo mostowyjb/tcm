@@ -110,21 +110,35 @@ button:hover{
   background:  #ffc109;
   color: #fff;
 }
+
+
+button svg {
+  position: relative;
+  margin-left: 2.5px;
+  margin-right:-2.5px;
+  margin-top:2.5px;
+  margin-bottom: -2.5px;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+
+
+}
 .align-btn{
   margin-left: -90%;
   margin-bottom: -9%;
 
 }
 .btnHome{
-  box-shadow: 8px 8px 16px 8px rgba(0,0,0,0.2);
-  margin-left:0%;
-  border: none;
-  border-radius: 100%;
-  width: 40px;
-  height: 40px;
+  padding: 0;
+text-align: center;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
   background:  #2A5788;
   color: #fff;
-  cursor: pointer;  width: 0%!important;
-  height: 0% !important;
+  cursor: pointer;
+
 
 }
