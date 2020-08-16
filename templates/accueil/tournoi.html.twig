@@ -16,192 +16,157 @@
 {%endblock a4%}
 {%block page%}Tournoi{%endblock page%}
 {% block title %}Tennis Club Montigny-en-Gohelle{% endblock %}
-
 {% block body %}
-<style>
-#customers {
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-  border-radius:.25rem;
-}
-
-#customers td, #customers th {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: center;
-}
-
-#customers tr:nth-child(even){background-color: #f2f2f2;}
-
-
-#customers th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color:#2A5687;
-  color: white;
-}
-.flex-container {
-  display: flex;
-  flex-direction: column;
-  background-color: DodgerBlue;
-}
-
-.flex-container > div {
-  background-color: #f1f1f1;
-  width: 100px;
-  margin: 10px;
-  text-align: center;
-  line-height: 75px;
-  font-size: 30px;
-}
-#table-wrapper {
-  position:relative;
-}
-#table-scroll {
-  height:425px;
-  overflow:auto;
-  margin-top:20px;
-}
-#table-wrapper table {
-  width:100%;
-
-}
-#table-wrapper table thead th .text {
-  position:absolute;
-  top:-20px;
-  z-index:2;
-  height:20px;
-  width:35%;
-  border:1px solid red;
-}
-</style>
+        <link rel="stylesheettylesheet" type="text/css" href="./css/bootstrap-datetimepicker.css">
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap-datetimepicker.min.css">
+                <script src="./js/bootstrap-datetimepicker.js"></script>
+        <script src="./js/bootstrap-datetimepicker.min.js"></script>
 <div class="tab">
-  <div class="center">
-    <button class="tablinks" onclick="openCity(event, 'yesterday')">Programmation du {{ "yesterday"|date("d/m/Y") }} </button>
-    <button class="tablinks" onclick="openCity(event, 'now')">Programmation du {{ "now"|date("d/m/Y") }} </button>
-    <button class="tablinks" onclick="openCity(event, 'tomorrow')">Programmation du {{ "tomorrow"|date("d/m/Y") }}</button>
+  <div class="">
+  <button id="myBtn" class="bt btnadd">Ajouter</button>
+    <button class="bt tablinks" onclick="openCity(event, 'yesterday')">Programmation du {{ "yesterday"|date("d/m/Y") }} </button>
+    <button class="bt tablinks" onclick="openCity(event, 'now')">Programmation du {{ "now"|date("d/m/Y") }} </button>
+    <button class="bt tablinks" onclick="openCity(event, 'tomorrow')">Programmation du {{ "tomorrow"|date("d/m/Y") }}</button>
   </div>
 </div>
 
 
 <div id="yesterday" class="tabcontent">
-  <div id="table-wrapper">
-    <div id="table-scroll">
-      <table id="customers">
-        <tr>
-          <th>Heure</th>
-          <th>Catégorie</th>
-          <th>Joueur</th>
-          <th>Set 1</th>
-          <th>Set 2</th>
-          <th>Set 3</th>
-          </tr>
-        <tr>
-          <td>18:00</td>
-          <td>SM</td>
-          <td>
-            <div>Alfreds Futterkiste</div>
-            <div>vs</div>
-            <div>Alfreds Futterkiste</div>
-          </td>
-          <td>
-            <div>6</div>
-            <div><hr></div>
-            <div>1</div>
-          </td>
-          <td>
-            <div>6</div>
-            <div><hr></div>
-            <div>7</div>
-          </td>
-          <td>
-            <div>6</div>
-            <div><hr></div>
-            <div>2</div>
-          </td>
-      </table>
+  <div class="scrollingtable">
+    <div class="scrollbar" id="style-2">
+      <div class="force-overflow">
+        <div id="table-wrapper">
+          <div id="table-scroll">
+            <table id="customers">
+              <tr>
+                <th>Heure</th>
+                <th>Catégorie</th>
+                <th>Joueur</th>
+                <th>Set 1</th>
+                <th>Set 2</th>
+                <th>Set 3</th>
+              </tr>
+              <tr>
+                <td>18:00</td>
+                <td>SM</td>
+                <td>
+                  <div>Alfreds Futterkiste</div>
+                  <div>vs</div>
+                  <div>Alfreds Futterkiste</div>
+                </td>
+                <td>
+                  <div>6</div>
+                  <div><hr></div>
+                  <div>1</div>
+                </td>
+                <td>
+                  <div>6</div>
+                  <div><hr></div>
+                  <div>7</div>
+                </td>
+                <td>
+                  <div>6</div>
+                  <div><hr></div>
+                  <div>2</div>
+                </td>
+              </tr>  
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
 <div id="now" class="tabcontent">
-  <div id="table-wrapper">
-    <div id="table-scroll">
-      <table id="customers">
-        <tr>
-          <th>Heure</th>
-          <th>Catégorie</th>
-          <th>Joueur</th>
-          <th>Set 1</th>
-          <th>Set 2</th>
-          <th>Set 3</th>
-          </tr>
-        <tr>
-          <td>18:00</td>
-          <td>SM</td>
-          <td>
-            <div>Alfreds Futterkiste</div>
-            <div>vs</div>
-            <div>Alfreds Futterkiste</div>
-          </td>
-          <td>
-            <div>6</div>
-            <div><hr></div>
-            <div>1</div>
-          </td>
-          <td>
-            <div>6</div>
-            <div><hr></div>
-            <div>7</div>
-          </td>
-          <td>
-            <div>6</div>
-            <div><hr></div>
-            <div>2</div>
-          </td>
-      </table>
+  <div class="scrollingtable">
+    <div class="scrollbar" id="style-2">
+      <div class="force-overflow">
+        <div id="table-wrapper">
+          <div id="table-scroll">
+            <table id="customers">
+              <tr>
+                <th>Heure</th>
+                <th>Catégorie</th>
+                <th>Joueur</th>
+                <th>Set 1</th>
+                <th>Set 2</th>
+                <th>Set 3</th>
+              </tr>
+              <tr>
+                <td>18:00</td>
+                <td>SM</td>
+                <td>
+                  <div>Alfreds Futterkiste</div>
+                  <div>vs</div>
+                  <div>Alfreds Futterkiste</div>
+                </td>
+                <td>
+                  <div>6</div>
+                  <div><hr></div>
+                  <div>1</div>
+                </td>
+                <td>
+                  <div>6</div>
+                  <div><hr></div>
+                  <div>7</div>
+                </td>
+                <td>
+                  <div>6</div>
+                  <div><hr></div>
+                  <div>2</div>
+                </td>
+              </tr>  
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
 <div id="tomorrow" class="tabcontent">
-  <div id="table-wrapper">
-    <div id="table-scroll">
-      <table id="customers">
-        <tr>
-          <th>Heure</th>
-          <th>Catégorie</th>
-          <th>Joueur</th>
-          <th>Set 1</th>
-          <th>Set 2</th>
-          <th>Set 3</th>
-          </tr>
-        <tr>
-          <td>18:00</td>
-          <td>SM</td>
-          <td>
-            <div>Alfreds Futterkiste</div>
-            <div>vs</div>
-            <div>Alfreds Futterkiste</div>
-          </td>
-          <td>
-            <div>6</div>
-            <div><hr></div>
-            <div>1</div>
-          </td>
-          <td>
-            <div>6</div>
-            <div><hr></div>
-            <div>7</div>
-          </td>
-          <td>
-            <div>6</div>
-            <div><hr></div>
-            <div>2</div>
-          </td>
-      </table>
+  <div class="scrollingtable">
+    <div class="scrollbar" id="style-2">
+      <div class="force-overflow">
+        <div id="table-wrapper">
+          <div id="table-scroll">
+            <table id="customers">
+              <tr>
+                <th>Heure</th>
+                <th>Catégorie</th>
+                <th>Joueur</th>
+                <th>Set 1</th>
+                <th>Set 2</th>
+                <th>Set 3</th>
+              </tr>
+              <tr>
+                <td>18:00</td>
+                <td>SM</td>
+                <td>
+                  <div>Alfreds Futterkiste</div>
+                  <div>vs</div>
+                  <div>Alfreds Futterkiste</div>
+                </td>
+                <td>
+                  <div>6</div>
+                  <div><hr></div>
+                  <div>1</div>
+                </td>
+                <td>
+                  <div>6</div>
+                  <div><hr></div>
+                  <div>7</div>
+                </td>
+                <td>
+                  <div>6</div>
+                  <div><hr></div>
+                  <div>2</div>
+                </td>
+              </tr>  
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -221,4 +186,98 @@ function openCity(evt, cityName) {
   evt.currentTarget.className += " active";
 }
 </script>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>
+      <form  action="{{ path('newMatch') }}" method="post">
+        <div class="form-inline">
+          <label ><b>Date : </b></label>
+          <input type="date" name="date">
+         
+          <label ><b>Heure : </b></label>
+          <input type="time" name="time">
+
+          <label ><b>Catégorie : </b></label>
+          <select name="category" id="category-select">
+            <option value="SM">SM</option>
+            <option value="SD">SD</option>
+            <option value="DM">DM</option>
+            <option value="DX">DX</option>
+            <option value="DD">DD</option>
+          </select>
+        </div>
+        <br/>
+        <div class="form-inline" id="P1 & P2">
+          <label><b>Joueur n°1 : </b></label>         
+          <input type="text" placeholder="Prénom" name="prenomA">
+          <input type="text" placeholder="Nom" name="nomA">
+
+          <label><b>Joueur n°2 : </b></label>
+          <input type="text" placeholder="Prénom" name="prenomB">
+          <input type="text" placeholder="Nom" name="nomB">
+        </div>
+        <br/>
+        <div class="form-inline" id="P3 & P4">
+          <label><b>Joueur n°1* : </b></label>         
+          <input type="text" placeholder="Prénom" name="prenomC">
+          <input type="text" placeholder="Nom" name="nomC">
+
+          <label><b>Joueur n°2* : </b></label>
+          <input type="text" placeholder="Prénom" name="prenomD">
+          <input type="text" placeholder="Nom" name="nomD">
+        </div>   
+        <br/>
+        <div class="form-inline" id="score">
+          <label><b>Set n°1 : </b></label>         
+          <input type="number" max="7" min="0" value="0" name="sapa">/ &nbsp;
+          <input type="number" max="7" min="0" value="0" name="sapb">
+
+          <label><b>Set n°2 : </b></label>         
+          <input type="number" max="7" min="0" value="0" name="sbpa">/ &nbsp;
+          <input type="number" max="7" min="0" value="0" name="sbpb">
+
+          <label><b>Set n°3 : </b></label>         
+          <input type="number" max="7" min="0" value="0" name="scpa">/ &nbsp;
+          <input type="number" max="7" min="0" value="0" name="scpb">
+        </div>   
+        <br/>
+        <button type="submit" class="bt btnadd" style="margin-right:60%">Ajouter</button>
+      </form>
+
+    </p>
+  </div>
+</div>
+
+<script>
+  // Get the modal
+  var modal = document.getElementById("myModal");
+
+  // Get the button that opens the modal
+  var btn = document.getElementById("myBtn");
+
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+
+  // When the user clicks the button, open the modal
+  btn.onclick = function() {
+    modal.style.display = "block";
+  }
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+</div>
 {% endblock %}

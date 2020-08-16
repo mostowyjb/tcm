@@ -3,8 +3,10 @@
 namespace App\Controller;
 use App\Entity\User;
 use App\Entity\Player;
+use App\Entity\TournoiMatch;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 class AccueilController extends AbstractController
 {
@@ -51,6 +53,85 @@ class AccueilController extends AbstractController
         return $this->render('accueil/tournoi.html.twig', [
             'controller_name' => 'AcceuilController',
         ]);
+    }
+
+    /**
+     * @Route("/newMatch", name="newMatch")
+     */
+    public function newMatch(\Symfony\Component\HttpFoundation\Request $request)
+    {
+      $nomA=$request->get('nomA');
+      $prenomA=$request->get('prenomA');
+      
+      $nomB=$request->get('nomB');
+      $prenomB=$request->get('prenomB');
+      
+      $nomC=$request->get('nomC');
+      $prenomC=$request->get('prenomC');
+
+      $nomD=$request->get('nomD');
+      $prenomD=$request->get('prenomD');
+
+      $sapa=$request->get('sapa');
+      $sapb=$request->get('sapb');
+      
+      $sbpa=$request->get('sbpa');
+      $sbpb=$request->get('sbpb');
+      
+      $scpa=$request->get('scpa');
+      $scpb=$request->get('scpb');
+
+      $category=$request->get('category');
+      $date=$request->get('date');
+      $time=$request->get('time');
+      $datetime= new DateTime();
+      $datetime=$date;
+      
+      $repository=$this->getDoctrine()->getRepository(Player::class);
+      $p1=$repository->findOneBy(['nom' => $nomA ,'prenom' => $prenomA]);
+      $p2=$repository->findOneBy(['nom' => $nomB ,'prenom' => $prenomB]);
+      $p3=$repository->findOneBy(['nom' => $nomC ,'prenom' => $prenomC]);
+      $p4=$repository->findOneBy(['nom' => $nomD ,'prenom' => $prenomD]);
+      if($p1!=NULL && $p2!=NULL)
+      {
+        $tmD= new TournoiMatch();
+        $tmD->setDate($datetime);
+        $tmD->setCategory($category);
+        $tmD->setIdPlayerA($p1);
+        $tmD->setIdPlayerB($p2);
+        if($p3!=NULL && $p4!=NULL)
+        {
+          $tmD->setIdPlayerC($p3);
+          $tmD->setIdPlayerD($p4);
+        }
+        $tmD->setPrenom($prenom);
+        $tmD->setClub($club);
+        $tmD->setClassement($classement);
+
+        $this->em=$this->getDoctrine()->getManager();
+        $this->em->persist($tmD);
+        $this->em->flush();
+        return $this->redirectToRoute('player');
+    }
+  }
+
+    /**
+     * @Route("/deleteMatch/{$idmatch}", name="deleteMatch")
+     */
+    public function deleteMatch($idmatch)
+    {
+
+      $repository=$this->getDoctrine()->getRepository(TournoiMatch::class);
+      $res=$repository->findOneBy(['id' => $idmatch]);
+
+      $match= new TournoiMatch();
+      $match=$res;
+
+      $this->em=$this->getDoctrine()->getManager();
+      $this->em->remove($match);
+      $this->em->flush();
+
+        return $this->redirectToRoute('player');
     }
 
     /**
@@ -277,17 +358,17 @@ class AccueilController extends AbstractController
       $this->em=$this->getDoctrine()->getManager();
       $this->em->flush();
 
-    return $this->redirectToRoute('player');
+      return $this->redirectToRoute('player');
     }
 
 
 
     /**
- * @Route("/denied", name="denied")
- */
-public function denied() {
-    return $this->redirect('/');
-}
+     * @Route("/denied", name="denied")
+     */
+    public function denied() {
+        return $this->redirect('/');
+    }
 
 
 }

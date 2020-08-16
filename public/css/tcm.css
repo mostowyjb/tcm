@@ -314,6 +314,8 @@ button, select {
       text-transform: none;
   }
 
+button:focus {outline:0;}
+
 /*-----------RESERVATION-----------*/
 iframe{
   min-height: 80%;
@@ -353,12 +355,6 @@ padding-right: 20px;
   	bottom: 5%;
 }
 
-
-
-/*
- *  STYLE 2
- */
-
 #style-2::-webkit-scrollbar-track
 {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
@@ -377,6 +373,18 @@ padding-right: 20px;
 	border-radius: 10px;
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 	background-color: #2A5788;
+}
+
+.scrollingtable {
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: middle;
+  overflow: hidden;
+  width: 100%; /*if you want a fixed width, set it here, else set to auto*/
+  min-width: 0/*100%*/; /*if you want a % width, set it here, else set to 0*/
+  height: 100%/*100%*/; /*set table height here; can be fixed value or %*/
+  min-height: 0/*104px*/; /*if using % height, make this large enough to fit scrollbar arrows + caption + thead*/
+  text-align: center;
 }
 
 
@@ -440,12 +448,69 @@ padding-right: 20px;
 input{
 border-radius: 30px; }
 input[type=text], input[type=password] {
-  width: 25%;
+  width: 18%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;
+}
+input[type=number], input[type=password] {
+  width: 5%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+input:focus {outline:0;}
+
+select {
+  width: 20%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 30px;
+}
+select:focus {outline:0;}
+select:hover {outline:0;}
+
+.form-inline {  
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.form-inline label {
+  margin: 5px 10px 5px 0;
+}
+
+.form-inline input {
+  vertical-align: middle;
+  margin: 5px 10px 5px 0;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.form-inline button {
+  padding: 10px 20px;
+  border: 1px solid #ddd;
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 800px) {
+  .form-inline input {
+    margin: 10px 0;
+  }
+  
+  .form-inline {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }
 
 
@@ -492,7 +557,7 @@ tr:nth-child(even) {
   margin-left: 10%;
   padding: 20px;
   border: 1px solid #888;
-  width: 50%;
+  width: 70%;
 }
 
 /* The Close Button */
